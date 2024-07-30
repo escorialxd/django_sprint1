@@ -46,7 +46,6 @@ posts = [
 
 def index(request):
     """Главная страница"""
-
     if request.method == 'GET':
         context = {
             'posts': posts,
