@@ -25,7 +25,7 @@ def urlpatterns(imports_by_full_name):
 
 @pytest.fixture()
 def settings_app_name():
-    return 'project_root'
+    return 'blogicum'
 
 
 @pytest.fixture()
@@ -35,7 +35,7 @@ def root_dir():
 
 @pytest.fixture()
 def project_dirname():
-    return 'project_root'
+    return 'blogicum'
 
 
 @pytest.fixture()
