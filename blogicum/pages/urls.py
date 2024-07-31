@@ -5,12 +5,12 @@ from . import views
 app_name = 'pages'
 
 urlpatterns = [
-    path('about/',
+    path('pages/about/',
          views.about,
          name='about'
          ),
 
-    path('rules/',
+    path('pages/rules/',
          views.rules,
          name='rules'
          ),

@@ -48,10 +48,10 @@ def index(request):
     """Главная страница."""
     if request.method == 'GET':
         context = {
-            'posts': posts,
+            'posts': posts[::-1],
         }
 
-        return render(request, 'index.html', context)
+        return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
@@ -60,7 +60,7 @@ def post_detail(request, id):
             'post': posts[id],
         }
 
-        return render(request, 'detail.html', context)
+        return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
@@ -69,4 +69,4 @@ def category_posts(request, category_slug):
             'category': category_slug,
         }
 
-        return render(request, 'category.html', context)
+        return render(request, 'blog/category.html', context)

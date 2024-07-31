@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ post.text|truncatewords:10 }}
+{% endblock %}
+
 {% block content %}
     <div class="container py-5">
         <article>
