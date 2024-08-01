@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 posts = [
     {
@@ -43,30 +44,33 @@ posts = [
     },
 ]
 
+posts_dict = {post['id']: post for post in posts}
+
 
 def index(request):
     """Главная страница."""
-    if request.method == 'GET':
-        context = {
-            'posts': posts[::-1],
-        }
+    context = {
+        'posts': posts[::-1],
+    }
 
-        return render(request, 'blog/index.html', context)
+    return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
-    if request.method == 'GET':
-        context = {
-            'post': posts[id],
-        }
+    post = posts_dict.get(id)
+    if post is None:
+        raise Http404('Пост не найден')
 
-        return render(request, 'blog/detail.html', context)
+    context = {
+        'post': post
+    }
+
+    return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
-    if request.method == 'GET':
-        context = {
-            'category': category_slug,
-        }
+    context = {
+        'category': category_slug,
+    }
 
-        return render(request, 'blog/category.html', context)
+    return render(request, 'blog/category.html', context)
